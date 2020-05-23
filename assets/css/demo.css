@@ -1,5 +1,6 @@
 :root{
-    --card-size: 74%;
+    --card-padding: 40px;
+    --card-size: calc(74% - (var(--card-padding) * 2));
     --bg-images-fill: linear-gradient(169deg, rgba(0,170,255,0.5) 0%, rgba(0,255,250,0.5) 34%, rgba(0,136,255,0.5) 100%);
 }
 
@@ -14,7 +15,7 @@ body{
 }
 
 .card{
-    --margin: calc((100% - var(--card-size)) / 2);
+    --margin: calc((100% - var(--card-size)) / 2 - var(--card-padding));
     display: inline-block;
     height: var(--card-size);
     width: var(--card-size);
@@ -24,4 +25,5 @@ body{
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    padding: var(--card-padding);
 }
