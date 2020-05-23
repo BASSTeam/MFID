@@ -31,6 +31,7 @@ body{
 
 .card.id{
     grid-template-columns: auto 40%;
+    grid-template-rows: 2.5em 1.5em 1.5em 2.5em 3.5em auto;
     grid-template-areas: "heading    heading"
                          "first-name avatar"
                          "last-name  avatar"
@@ -65,4 +66,8 @@ body{
 
 .card.id > .footer{
     grid-area: footer;
+}
+
+.card.id > div {
+    word-break: break-word;
 }
