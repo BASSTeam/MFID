@@ -1,7 +1,7 @@
 :root{
     --card-padding: 40px;
-    --card-size: calc(74% - (var(--card-padding) * 2));
-    --bg-images-fill: linear-gradient(169deg, rgba(0,170,255,0.5) 0%, rgba(0,255,250,0.5) 34%, rgba(0,136,255,0.5) 100%);
+    --card-size: 74%;
+    --card-size-shifted: calc(var(--card-size) - (var(--card-padding) * 2));
 }
 
 body, html{
@@ -15,10 +15,10 @@ body{
 }
 
 .card{
-    --margin: calc((100% - var(--card-size)) / 2 - var(--card-padding));
+    --margin: calc((100% - var(--card-size-shifted)) / 2 - var(--card-padding));
     display: inline-block;
-    height: var(--card-size);
-    width: var(--card-size);
+    height: var(--card-size-shifted);
+    width: var(--card-size-shifted);
     margin-left: var(--margin);
     margin-top: var(--margin);
     background: #d8eefb;
@@ -26,4 +26,43 @@ body{
     overflow: hidden;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     padding: var(--card-padding);
+    display: grid;
+}
+
+.card.id{
+    grid-template-columns: auto 40%;
+    grid-template-areas: "heading    heading"
+                         "first-name avatar"
+                         "last-name  avatar"
+                         "age        avatar"
+                         "birthday   avatar"
+                         "footer     footer";
+}
+
+.card.id > .heading{
+    grid-area: heading;
+}
+
+.card.id > .avatar{
+    grid-area: avatar;
+}
+
+.card.id > .first-name{
+    grid-area: first-name;
+}
+
+.card.id > .last-name{
+    grid-area: last-name;
+}
+
+.card.id > .age{
+    grid-area: age;
+}
+
+.card.id > .birthday{
+    grid-area: birthday;
+}
+
+.card.id > .footer{
+    grid-area: footer;
 }
