@@ -1,0 +1,27 @@
+:root{
+    --card-size: 74%;
+    --bg-images-fill: linear-gradient(169deg, rgba(0,170,255,0.5) 0%, rgba(0,255,250,0.5) 34%, rgba(0,136,255,0.5) 100%);
+}
+
+body, html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #b7e1c3;
+}
+
+.card{
+    --margin: calc((100% - var(--card-size)) / 2);
+    display: inline-block;
+    height: var(--card-size);
+    width: var(--card-size);
+    margin-left: var(--margin);
+    margin-top: var(--margin);
+    background: #d8eefb;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
