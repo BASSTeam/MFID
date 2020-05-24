@@ -1,5 +1,5 @@
 :root{
-    --card-padding: 40px;
+    --card-padding: 2.5em;
     --card-size: 74%;
     --card-size-shifted: calc(var(--card-size) - (var(--card-padding) * 2));
 }
@@ -12,7 +12,11 @@ body, html{
 
 body{
     background: #b7e1c3;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Exo 2', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.monotype{
+    font-family: 'Ubuntu Mono', 'Noto Mono', 'Roboto Mono', mono, monospace;
 }
 
 .card{
@@ -28,55 +32,42 @@ body{
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     padding: var(--card-padding);
     display: flex;
-}
-
-.card.id{
-    grid-template-columns: auto 40%;
-    grid-template-rows: 4em 1.5em 1.5em 2.5em 3.5em auto;
-    grid-template-areas: "heading    heading"
-                         "first-name avatar"
-                         "last-name  avatar"
-                         "age        avatar"
-                         "birthday   avatar"
-                         "footer     footer";
+    flex-direction: column;
 }
 
 .card.id > .heading{
-    font-family: 'Roboto Mono', monospace;
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 1.2em;
 }
 
-.card.id > .footer{
+.card.id .avatar{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    float: right;
+    width: 40%;
+    min-width: 80px;
+    max-width: 200px;
+    margin-left: 10px;
+}
+
+.card.id .avatar > div{
+    padding-bottom: calc(100% / 3 * 4);
+}
+
+.card.id .footer{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.card.id .footer > div:first-child{
     flex-grow: 1;
 }
 
-.card.id > .avatar{
-    grid-area: avatar;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-}
-
-.card.id > .first-name{
-    grid-area: first-name;
-}
-
-.card.id > .last-name{
-    grid-area: last-name;
-}
-
-.card.id > .age{
-    grid-area: age;
-}
-
-.card.id > .birthday{
-    grid-area: birthday;
-}
-
-.card.id > .footer{
-    grid-area: footer;
-    display: grid;
-    grid-template-rows: auto 20px 3.5em;
-    grid-template-columns: 1fr;
+.card.id .footer > hr{
+    width: 100%;
 }
 
 .card.id > div {
