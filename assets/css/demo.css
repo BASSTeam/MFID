@@ -12,6 +12,7 @@ body, html{
 
 body{
     background: #b7e1c3;
+    font-family: 'Roboto', sans-serif;
 }
 
 .card{
@@ -31,7 +32,7 @@ body{
 
 .card.id{
     grid-template-columns: auto 40%;
-    grid-template-rows: 2.5em 1.5em 1.5em 2.5em 3.5em auto;
+    grid-template-rows: 4em 1.5em 1.5em 2.5em 3.5em auto;
     grid-template-areas: "heading    heading"
                          "first-name avatar"
                          "last-name  avatar"
@@ -46,6 +47,9 @@ body{
 
 .card.id > .avatar{
     grid-area: avatar;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 .card.id > .first-name{
@@ -66,6 +70,9 @@ body{
 
 .card.id > .footer{
     grid-area: footer;
+    display: grid;
+    grid-template-rows: auto 20px 3.5em;
+    grid-template-columns: 1fr;
 }
 
 .card.id > div {
