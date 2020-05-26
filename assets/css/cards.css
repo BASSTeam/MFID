@@ -5,12 +5,9 @@
 }
 
 .card{
-    --margin: calc((100% - var(--card-size-shifted)) / 2 - var(--card-padding));
     display: inline-block;
     height: var(--card-size-shifted);
     width: var(--card-size-shifted);
-    margin-left: var(--margin);
-    margin-top: var(--margin);
     background: #d8eefb;
     border-radius: 1.5em;
     overflow: hidden;
@@ -18,6 +15,10 @@
     padding: var(--card-padding);
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .card.id > .heading{
