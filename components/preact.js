@@ -1,5 +1,5 @@
-import { h, Component, render } from 'https://unpkg.com/preact?module'
+import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js'
 
-export default h
+export default html
 
 export { Component, render }

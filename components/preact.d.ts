@@ -1,5 +1,7 @@
-import { h, Component, render } from 'preact'
+import htm, { Component, render } from '../@typings/preact.js'
 
-export default h
+declare const html: typeof htm
 
 export { Component, render }
+
+export default html
