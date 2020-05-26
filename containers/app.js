@@ -37,5 +37,3 @@ export default class App extends Component{
         ` : null
     }
 }
-
-//App.prototype.componentDidUpdate = App.prototype.componentDidMount
