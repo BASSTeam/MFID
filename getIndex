@@ -1,0 +1,25 @@
+{
+	"data": {
+		"type": "page",
+		"title": "",
+		"themeColor": "#4a85a2",
+		"icon": "assets/images/logo-white.svg",
+		"dummy": true,
+		"children": [
+			{
+				"type": "module",
+				"url": "./index.js"
+			},
+			{
+				"type": "dynamic",
+				"update": {
+					"action": "getPage",
+					"args": [ "main" ]
+				},
+				"default": [ "" ],
+				"silent": true,
+				"interval": 100
+			}
+		]
+	}
+}
