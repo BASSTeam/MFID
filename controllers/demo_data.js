@@ -13,3 +13,7 @@ export const id = '4dcb2b90-2fb3-11e9-9c50-057cb79cc3a4'
 export const nickname = 'marlock' 
 
 export const citizen = true
+
+export const address = 'MnBpQh4LfGM9Kcjb4NS66XJCghGfpGZXcx'
+
+export const privkey = 'TXBsHARrT8qpyzejTqDs8FCEb8K5i2jSvFeHXuv5pAmn7Nnpbbeo'
