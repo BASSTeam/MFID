@@ -1,54 +1,61 @@
-import { root, images } from '../controllers/paths.js'
+import { root } from '../controllers/paths.js'
 import getAccountInfo from '../controllers/account.js'
-import { QRCode, createQRLink, jsQR } from '../controllers/qr.js'
+import { QRCode, createQRLink } from '../controllers/qr.js'
 import { getCameraVideo } from '@mfelements/user-media'
 
 const defaultPage = await fetch(root + '/getIndex').then(v => v.json());
 
-function processQRStream(){
-	let cancel, done;
-	const p = new Promise(async (resolve, reject) => {
-		const { stream } = await getCameraVideo({
-			type: 'imageData',
-			frameRate: 30,
-			videoPosition: 'fullscreen'
-		});
-		const streamReader = stream.getReader();
-		cancel = () => {
-			if(!done){
-				streamReader.cancel();
-				reject('canceled')
+async function processQRStream(){
+	if(!(await BarcodeDetector.getSupportedFormats()).includes('qr_code'))
+		throw new Error('QR code scanning not supported');
+
+	const stream = getCameraVideo({
+		type: 'imageData',
+		videoPosition: 'fullscreen',
+		frontCamera: false,
+	});
+
+	const barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
+	const p = new Promise(async r => {
+		for await(const imageData of stream){
+			let codes;
+			try{
+				codes = await barcodeDetector.detect(imageData);
+			} catch(e){
+				console.error(e);
 			}
-		};
-		streamReader.read().then(function process({ value: { data, width, height } }){
-			if(done){
-				done = false;
-				cancel()
+			console.log({codes});
+			if(codes.length){
+				stream.stop();
+				return r(codes);
+			} else {
+				console.warn('Не удалось отсканировать код')
 			}
-			const code = jsQR(data, width, height);
-			if(code){
-				done = true;
-				streamReader.cancel();
-				resolve(code);
-			}
-			return streamReader.read().then(process)
-		});
+		}
 	});
 	return Object.assign(p, {
 		cancel(){
-			if(typeof cancel === 'function') cancel();
-			else done = true
+			stream.stop()
 		}
 	})
 }
 
 registerAction('scanQR', async () => {
 	const stream = processQRStream();
-	return {
-		type: 'page',
-		children: [
-			'Отсканировано: ' + await stream
-		]
+	try{
+		return {
+			type: 'page',
+			children: [
+				'Отсканировано: ' + await stream
+			]
+		}
+	} catch(e){
+		return {
+			type: 'page',
+			children: [
+				`${e.name}: ${e.message}`
+			]
+		}
 	}
 });
 
