@@ -70,7 +70,7 @@ export default async () => {
 				children: [
 					{
 						type: 'button',
-						text: 'Отсканировать QR',
+						text: 'scan_qr',
 						onClick: {
 							action: 'scanQR',
 							args: [],
@@ -99,35 +99,50 @@ export default async () => {
 							ratio: '1:1',
 							width: '60%',
 						},
-						[ [
-							'\\\n\\\n',
-							`**${account.firstName} ${account.lastName}**`,
-							`aka ${account.nickname}`,
-							'**Дата рождения:**',
-							`${account.birthday} (${account.age} года)`,
-							`**${account.citizen ? 'Гражданин' : account.resident ? 'Резидент' : 'Наблюдатель'}**`,
-						].join('\\\n') ],
+						[{
+							type: 'printf',
+							text: 'front_side',
+							args: [
+								account.firstName,
+								account.lastName,
+								account.nickname,
+								account.birthday,
+								{
+									type: 'printf',
+									subType: 'number_localization',
+									num: account.age,
+									key: 'years_old'
+								},
+								{
+									type: 'printf',
+									text: account.citizen ? 'citizen' : account.resident ? 'resident' : 'watcher'
+								},
+							]
+						}],
 						{
 							type: 'button',
-							text: 'Показать e-mail',
+							text: 'show_email',
 						},
 					],
 					[
 						{
 							type: 'image',
-							src: createQRLink(new QRCode('test me')),
+							src: createQRLink(new QRCode('In progress. There is no real reason to show you a real QR now \'cause there is no software ready to read it')),
 							ratio: '1:1',
 							width: '100%',
 							invertable: true,
 						},
-						[ "\\\n_Отсканируйте этот QR-код в MFID, чтобы проверить валидность документа_" ],
+						{
+							type: 'printf',
+							text: 'scan_this_qr'
+						},
 						{
 							type: 'dialog',
-							text: '##Тут окно',
-							btnText: 'Проверить вручную',
+							text: 'not_implemented',
+							btnText: 'check_yourself',
 							buttons: [
 								{
-									text: 'OK',
+									text: 'ok',
 								},
 							],
 						},

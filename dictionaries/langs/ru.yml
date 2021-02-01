@@ -1,0 +1,19 @@
+check_yourself: Проверить вручную
+ok: Хорошо
+front_side: |
+  
+
+  **%s %s**
+  aka %s
+  Дата рождения:
+  %d (%s)
+  **%s**
+not_implemented: Извините, это пока не работает
+scan_qr: Сканировать QR
+scan_this_qr: |
+  
+  _Scan this QR in MFID to check document's validity_
+citizen: Гражданин
+resident: Резидент
+watcher: Наблюдатель
+show_email: Показать e-mail

@@ -1,0 +1,6 @@
+langs:
+  en: ./langs/en.yml
+  ru: ./langs/ru.yml
+number_localizations:
+  en: ./langs/en.num.yml
+  ru: ./langs/ru.num.yml

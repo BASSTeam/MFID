@@ -1,0 +1,19 @@
+check_yourself: Check yourself
+ok: OK
+front_side: |
+  
+
+  **%s %s**
+  aka %s
+  Birthday:
+  %d (%s)
+  **%s**
+not_implemented: Sorry, this is not implemented yet
+scan_qr: Scan QR
+scan_this_qr: |
+  
+  _Scan this QR in MFID to check document's validity_
+citizen: Citizen
+resident: Resident
+watcher: Watcher
+show_email: Show e-mail
