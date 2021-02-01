@@ -118,6 +118,7 @@ export default async () => {
 							src: createQRLink(new QRCode('test me')),
 							ratio: '1:1',
 							width: '100%',
+							invertable: true,
 						},
 						[ "\\\n_Отсканируйте этот QR-код в MFID, чтобы проверить валидность документа_" ],
 						{
