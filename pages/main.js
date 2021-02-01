@@ -1,9 +1,7 @@
-import { root } from '../controllers/paths.js'
+import defaultPage from '../controllers/indexPage.js'
 import getAccountInfo from '../controllers/account.js'
 import { QRCode, createQRLink } from '../controllers/qr.js'
 import { getCameraVideo } from '@mfelements/user-media'
-
-const defaultPage = await fetch(root + '/getIndex').then(v => v.json());
 
 async function processQRStream(){
 	if(!(await BarcodeDetector.getSupportedFormats()).includes('qr_code'))
