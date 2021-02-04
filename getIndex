@@ -5,7 +5,7 @@
 		"themeColor": "#4a85a2",
 		"icon": "assets/images/logo-white.svg",
 		"dummy": true,
-		"dictionary": "./dictionaries/index.yml"
+		"dictionary": "./dictionaries/index.yml",
 		"children": [
 			{
 				"type": "module",
